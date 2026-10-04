@@ -49,3 +49,22 @@ If the activity is confirmed malicious:
 
 ## Related Query
 See [`powershell-encoded-command.kql`](./powershell-encoded-command.kql)
+
+## Validation
+
+A benign validation test can be performed in an authorized lab environment by executing PowerShell with an encoded command.
+
+Expected validation process:
+
+1. Execute a benign encoded PowerShell command on a test endpoint.
+2. Confirm the execution appears in Microsoft Defender for Endpoint `DeviceProcessEvents`.
+3. Run the detection query.
+4. Confirm the event is returned.
+5. Review the resulting fields including:
+   - DeviceName
+   - AccountName
+   - ProcessCommandLine
+   - InitiatingProcessFileName
+6. Document any legitimate activity that may require tuning.
+
+> Validation should only be performed in systems you own or are explicitly authorized to test.
